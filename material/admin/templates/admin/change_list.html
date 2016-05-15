@@ -8,12 +8,14 @@
   $(document).ready(function($) {
     if ($('#result_list').length != 0) {
       var table = $("#result_list").DataTable({
-        "paging":     false,
-        "ordering":   false,
-        "info":       false,
-        "bFilter":    false,
-        "bAutoWidth": false,
-            "responsive": true
+        paging: false,
+        ordering: false,
+        info: false,
+        bFilter: false,
+        bAutoWidth: false,
+        responsive: {
+          details: false
+        }
       });
       new $.fn.dataTable.FixedHeader(table);
     }
