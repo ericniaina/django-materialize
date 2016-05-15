@@ -257,6 +257,34 @@ ul.side-nav.module-menu li.active>a>span.badge {
 /*
     Change list page
 */
+@media only screen and (min-width : 601px) {
+    .actions-card {
+        margin-left: -10px;
+    }
+}
+
+.actions-card .card-content {
+    padding: 10px;
+    padding-top: 10px;
+}
+
+.actions-card .card-title {
+    font-size: 18px;
+    line-height: 16px;
+    text-transform: uppercase;
+    font-weight: 100;
+    padding-left: 10px;
+}
+
+.actions-card span {
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.actions-card .card-action {
+    padding: 10px;
+}
+
 .filters a {
     margin-right: 0;
 }
@@ -273,6 +301,11 @@ ul.side-nav.module-menu li.active>a>span.badge {
     background: white;
 }
 
+
+.results table th,
+.results table td {
+    vertical-align: top;
+}
 
 .results table tr th:first-child,
 .results table tr td:first-child {
@@ -291,6 +324,10 @@ ul.side-nav.module-menu li.active>a>span.badge {
 
 .results table tr .action-checkbox {
     width: 50px;
+}
+
+.fixedHeader-floating .action-checkbox label {
+    display: none;
 }
 
 .results thead th {

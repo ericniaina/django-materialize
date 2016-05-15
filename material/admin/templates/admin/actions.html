@@ -1,9 +1,11 @@
 {% load i18n material_form %}
-<div class="card actions">
+<div class="card actions-card">
     <div class="card-content">
         <span class="card-title black-text" style="margin-bottom:20px">{% trans 'Actions' %}</span>
         <div class="actions">
-            {% form form=action_form %}{% endform %}
+            {% form form=action_form %}
+                {% part form.action label %}{% endpart %}
+            {% endform %}
 
             {% if actions_selection_counter %}
             <script type="text/javascript">var _actions_icnt="{{ cl.result_list|length|default:"0" }}";</script>
@@ -14,9 +16,7 @@
             <span class="question" style="display:none">
                 <a href="javascript:;" title="{% trans "Click here to select the objects across all pages" %}">{% blocktrans with cl.result_count as total_count %}Select all {{ total_count }} {{ module_name }}{% endblocktrans %}</a>
             </span>
-            <span class="clear"  style="display:none">
-                <a href="javascript:;">{% trans "Clear selection" %}</a>
-            </span>
+            <span class="clear"  style="display:none"><a href="javascript:;">{% trans "Clear selection" %}</a></span>
             {% endif %}
             {% endif %}
         </div>

@@ -119,7 +119,7 @@ except ImportError:
 
 if django.VERSION >= (1, 9):
     def context_flatten(context):
-        return context.flatte()
+        return context.flatten()
 else:
     def context_flatten(context):
         result = {}
