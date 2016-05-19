@@ -72,9 +72,9 @@
            {% admin_actions %}
         {% endif %}
         {% if cl.date_hierarchy or cl.list_filter or cl.search_fields %}
-        <div class="card filters">
+        <div class="card filters-card">
             <div class="card-content">
-                <span class="card-title black-text" style="margin-bottom:20px">{% trans 'Filters' %}</span>
+                <span class="card-title black-text">{% trans 'Filter' %}</span>
                 {% block search %}{% search_form cl %}{% endblock %}
 
                 {% block filters %}

@@ -270,10 +270,10 @@ ul.side-nav.module-menu li.active>a>span.badge {
 
 .actions-card .card-title {
     font-size: 18px;
-    line-height: 16px;
     text-transform: uppercase;
     font-weight: 100;
     padding-left: 10px;
+    margin-bottom: -10px;
 }
 
 .actions-card span {
@@ -285,13 +285,34 @@ ul.side-nav.module-menu li.active>a>span.badge {
     padding: 10px;
 }
 
-.filters a {
+@media only screen and (min-width : 601px) {
+    .filters-card {
+        margin-left: -10px;
+    }
+}
+
+.filters-card .card-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 100;
+    padding-left: 10px;
+    margin-top: -10px;
+}
+
+.filters-card .card-content {
+    padding: 10px;
+    padding-top: 10px;
+}
+
+.filters-card a {
     margin-right: 0;
 }
-.filters.card {
+
+.filters-card.card {
     overflow:initial;
 }
-.filters #changelist-search-button {
+
+.filters-card #changelist-search-button {
     z-index:1000;
     position:absolute;
     right:15px;
@@ -536,4 +557,11 @@ ul.side-nav.module-menu li.active>a>span.badge {
     .change-form .multiselect .selector-chooser .selector-remove i {
         transform: rotate(90deg);
     }
+}
+
+/* 
+    Delete confirmation
+*/
+.delete-confirmation li {
+    padding-left: 20px;
 }
