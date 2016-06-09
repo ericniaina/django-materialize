@@ -1,19 +1,13 @@
-===============
-Django Material
-===============
+=================
+Django Materialze
+=================
+
+This is a fork of [Django Material](https://github.com/viewflow/django-material). Sorry that we haven't really updated the README. We
+wish to strip out the things that normally should be taken care of at the
+project level, and also remove the frontend part, as we don't see the
+benefit.
 
 Material design for Django Forms and Admin. Template driven.
-
-.. image:: https://img.shields.io/pypi/v/django-material.svg
-    :target: https://pypi.python.org/pypi/django-material
-
-.. image:: https://travis-ci.org/viewflow/django-material.svg
-    :target: https://travis-ci.org/viewflow/django-material
-
-.. image:: https://badges.gitter.im/Join%20Chat.svg
-   :alt: Join the chat at https://gitter.im/viewflow/django-material
-   :target: https://gitter.im/viewflow/django-material?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-
 
 Overview
 ========
@@ -23,8 +17,6 @@ Overview
   * Strong python/html code separation
   * Easy redefinition of particular fields rendering
   * Complex form layout support
-
-- Frontend_ - Quick starter template for modular applications development
 
 - Admin_ - Material-designed django admin
 
