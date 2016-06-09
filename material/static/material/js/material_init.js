@@ -7,7 +7,8 @@ $(document).on('ready pjax:complete', function() {
 
         $container.find('[data-form-control="date"]').each(function() {
             var input = $(this);
-            input.datetimepicker({format: input.data('date-format'), timepicker:false, mask:false, scrollInput:false});
+            input.pickadate({ selectMonths: true, format: input.data('date-format') });
+            // input.datetimepicker({format: input.data('date-format'), timepicker:false, mask:false, scrollInput:false});
         });
         $container.find('[data-form-control="time"]').each(function() {
             var input = $(this);
