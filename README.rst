@@ -20,28 +20,23 @@ Overview
 
 - Admin_ - Material-designed django admin
 
-Demo: http://forms.viewflow.io/
-
-.. image:: .screen.png
-   :width: 400px
-
 Installation
 ============
 
-django-material tested with Python 2.7/3.4/3.5, django 1.8, django 1.9::
+django-materialize tested with Python 3.4/3.5, django 1.9::
 
-    pip install django-material
+.. pip install django-materialize
 
 
 Forms
 =====
 
-Add `material` into INSTALLED_APPS settings
+Add `django_materialize` into INSTALLED_APPS settings
 
 .. code-block:: python
 
     INSTALLED_APPS = (
-         'material',
+         'django_materialize',
          ...
     )
 
@@ -49,9 +44,9 @@ Include material javascript and styles along with jQuery into your base template
 
 .. code-block:: html
 
-    {% include 'material/includes/material_css.html' %}
-    <script src="{% static 'material/js/jquery-2.2.0.js' %}"></script>
-    {% include 'material/includes/material_js.html' %}
+    {% include 'django_materialize/includes/material_css.html' %}
+    <script src="{% static 'django_materialize/js/jquery-2.2.0.js' %}"></script>
+    {% include 'django_materialize/includes/material_js.html' %}
 
 Load the `material_form` template tag library
 
@@ -72,7 +67,7 @@ And render your form with {% form %} template tag
 Template tags
 -------------
 
-`django-material` forms processing is built around simple concept
+`django-materialize` forms processing is built around simple concept
 called *part*. `part` is like django template block, it has a default
 value and could be overriden.  But `parts` are created dynamically for
 each form field, which allows you to redefine specific form field html
@@ -117,7 +112,7 @@ Layout object is the way to specify relative fields placements and sizes.
 
 .. code-block:: python
 
-    from material import *
+    from django_materialize import *
 
     layout = Layout(
         Row('shipment_no', 'description')
@@ -155,88 +150,20 @@ form fields list directly from layout object
 
 ****
 
-Frontend
-========
-
-Frontend template assumes that your application contains a set of top level `modules`
-each one could restrict user access level and have own submenu.
-
-To quick start add `material.frontend` into INSTALLED_APPS settings
-
-.. code-block:: python
-
-    INSTALLED_APPS = (
-         'material',
-         'material.frontend',
-         ...
-    )
-
-Add frontend urls into global urlconf module at urls.py
-
-.. code-block:: python
-
-    from material.frontend import urls as frontend_urls
-
-    urlpatterns = [
-        ...
-        url(r'', include(frontend_urls)),
-    ]
-
-The fronend module perform all required settings modification (add middleware, context_processors and template tags),
-automagically till `MATERIAL_FRONTEND_AUTOREGISTER` settings set to False.
-
-To create a new module add `ModuleMixin` to your `AppConfig` definision in `apps.py`
-
-.. code-block:: python
-
-    from material.frontend.apps import ModuleMixin
-
-    class Sales(ModuleMixin, AppConfig):
-        name = 'sales'
-        icon = '<i class="mdi-communication-quick-contacts-dialer"></i>'
-
-The application have to have <app_module>/urls.py file, with
-a single no-parametrized url with name='index', ex
-
-.. code-block:: python
-
-    urlpatterns = [
-            url('^$', generic.TemplateView.as_view(template_name="sales/index.html"), name="index"),
-    ]
-
-All AppConfigs urls will be included into material.frontend.urls automatically under /<app_label>/ prefix
-The AppConfig.label, used for the urls namespace.
-
-The menu.html sample
-
-.. code-block:: html
-
-        <ul>
-            <li><a href="{% url 'sales:index' %}">Dashboard</a></li>
-            <li><a href="{% url 'sales:customers' %}">Customers</a></li>
-            {% if perms.sales.can_add_lead %}<li><a href="{% url 'sales:leads' %}">Leads</a></li>{% endif %}
-        </ul>
-
-After you create a new module, you need to run `./manage.py migrate`.
-
-You can manage module installed state on the django admin page - `/admin/frontend/module/`
-
-****
-
 Admin
 ======
 
-Add `material.admin` into INSTALLED_APPS settings
+Add `django_materialize.admin` into INSTALLED_APPS settings
 
 .. code-block:: python
 
     INSTALLED_APPS = (
-         'material',
-         'material.admin',
+         'django_materialize',
+         'django_materialize.admin',
          ...
     )
 
-*NOTE:* 'material.admin' must be added before 'django.contrib.admin'
+*NOTE:* 'django_materialize.admin' must be added before 'django.contrib.admin'
 
 Ensure that `django.template.context_processors.request` in your template context processor settings list
 
@@ -255,30 +182,10 @@ Ensure that `django.template.context_processors.request` in your template contex
         },
     ]
 
-You can provide a custom admin site module in the `MATERIAL_ADMIN_SITE` setting
+You can provide a custom admin site module in the `MATERIALIZE_ADMIN_SITE` setting
 
 .. code-block:: python
 
-    MATERIAL_ADMIN_SITE = 'mymodule.admin.admin_site'
+    MATERIALIZE_ADMIN_SITE = 'mymodule.admin.admin_site'
 
 **Admin support development is on initial stage. Only basic admin features are available.**
-
-****
-
-Changelog
-=========
-
-0.7.0 2016-03-13 - Alpha
-------------------------
-
-The last alpha release.
-
-* Forms - Fix controls in new forms in formsets
-* Forms - New way to append or override widget attrs in template
-* Forms - Removed `group_class`, `add_group_class`, `add_label_class` redifinable parts
-* Admin - Match table styles to google guidelines.
-* Admin - Start to work on admin widget support improvements http://forms.viewflow.io/demo/widget/admin/
-* Admin - Fix scrollbar
-* Frontend - Switch from fontawesome to material-design-iconic font
-* Frontend - Fix broken links on user navigation menu
-* Frontend - Modules are refactored to AppConfig mixins
