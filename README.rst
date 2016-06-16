@@ -40,7 +40,7 @@ Add `django_materialize` into INSTALLED_APPS settings
          ...
     )
 
-Include material javascript and styles along with jQuery into your base template.
+Include django_materialize javascript and styles along with jQuery into your base template.
 
 .. code-block:: html
 

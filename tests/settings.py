@@ -15,9 +15,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     # material apps
-    'material',
-    'material.frontend',
-    'material.admin',
+    'django_materialize',
+    'django_materialize.admin',
 
     # standard django apps
     'django.contrib.admin',
@@ -75,14 +74,14 @@ TEMPLATES = [
 try:
     # shortcut for in form templates
     from django.template.base import add_to_builtins
-    add_to_builtins('material.templatetags.material_form')
+    add_to_builtins('django_materialize.templatetags.material_form')
     add_to_builtins('template_debug.templatetags.debug_tags')
 except ImportError:
     """
     Django 1.9.
     """
     TEMPLATES[0]['OPTIONS']['builtins'] = [
-        'material.templatetags.material_form',
+        'django_materialize.templatetags.material_form',
         'template_debug.templatetags.debug_tags'
     ]
 

@@ -40,7 +40,7 @@ def test_view(request, form_cls, template_content):
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                 <title>Material Design for Django Forms and Admin</title>
-                {{% include 'material/includes/material_css.html' %}}
+                {{% include 'django_materialize/includes/material_css.html' %}}
             </head>
             <body>
                 <div class="container expand-on-small-only" style="width:500px">
@@ -49,8 +49,8 @@ def test_view(request, form_cls, template_content):
                         <button class="" type="submit">Submit</button>
                     </form>
                 </div>
-                <script src="{{% static 'material/admin/js/jquery-2.1.4.min.js' %}}" type="text/javascript"></script>
-                {{% include 'material/includes/material_js.html' %}}
+                <script src="{{% static 'django_materialize/admin/js/jquery-2.1.4.min.js' %}}" type="text/javascript"></script>
+                {{% include 'django_materialize/includes/material_js.html' %}}
             </body>
             </html>
             '''.format(template_content))

@@ -1,7 +1,7 @@
 from django import forms
 from django.test.utils import override_settings
 from django_webtest import WebTest
-from material import Layout, Row, Column
+from django_materialize import Layout, Row, Column
 from . import build_test_urls
 
 

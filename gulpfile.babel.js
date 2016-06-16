@@ -5,25 +5,25 @@ import sass from 'gulp-sass';
 
 gulp.task('material-icons.font', () => {
   return gulp.src('./node_modules/material-design-icons/iconfont/*')
-    .pipe(gulp.dest('./material/static/material/fonts/material-design-icons/'));
+    .pipe(gulp.dest('./django_materialize/static/django_materialize/fonts/material-design-icons/'));
 });
 
 
 gulp.task('roboto.font', () => {
   return gulp.src('./node_modules/materialize-css/fonts/roboto/*')
-    .pipe(gulp.dest('./material/static/material/fonts/roboto/'));
+    .pipe(gulp.dest('./django_materialize/static/django_materialize/fonts/roboto/'));
 });
 
 
 
 gulp.task('materialize.js', () => {
   return gulp.src('./node_modules/materialize-css/dist/js/materialize.js')
-    .pipe(gulp.dest('./material/static/material/js/'));
+    .pipe(gulp.dest('./django_materialize/static/django_materialize/js/'));
 });
 
 
 gulp.task('materialize.css', () => {
-  return gulp.src('./material/static/material/sass/*.scss')
+  return gulp.src('./django_materialize/static/django_materialize/sass/*.scss')
     .pipe(sass({
       includePaths: './node_modules/'
     }).on(
@@ -42,7 +42,7 @@ gulp.task('materialize.css', () => {
       })
     ]))
     .pipe(gulp.dest(
-      './material/static/material/css/'
+      './django_materialize/static/django_materialize/css/'
     ));
 });
 

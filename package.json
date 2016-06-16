@@ -1,5 +1,5 @@
 {
-  "name": "django-material",
+  "name": "django-materialize",
   "private": true,
   "scripts": {
     "gulp": "gulp"

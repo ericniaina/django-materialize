@@ -1,9 +1,7 @@
 include LICENSE
 include MANIFEST.in
 include README.rst
-recursive-include material/templates *
-recursive-include material/static *
-recursive-include material/frontend/templates *
-recursive-include material/frontend/static *
-recursive-include material/admin/templates *
-recursive-include material/admin/static *
+recursive-include django_materialize/templates *
+recursive-include django_materialize/static *
+recursive-include django_materialize/admin/templates *
+recursive-include django_materialize/admin/static *
