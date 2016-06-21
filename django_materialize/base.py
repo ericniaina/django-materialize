@@ -111,13 +111,18 @@ class Row(LayoutNode):
 
         def elements_iterator():
             elements_span = sum(element.span_columns for element in self.elements)
-            if container_size % elements_span != 0:
-                warnings.warn("Can't equally divide container {} for {} span elements"
-                              .format(container_size, self.elements))
 
-            span_multiplier = container_size // elements_span
+            span_multiplier = 1
+            if elements_span > container_size:
+                span_multiplier = container_size / elements_span
+
             for element in self.elements:
-                yield element, element.span_columns * span_multiplier
+                calculated_span = element.span_columns * span_multiplier
+                if calculated_span % 1 != 0:
+                    warnings.warn("Can't equally divide container {} for {} span elements"
+                            .format(container_size, self.elements))
+
+                yield element, int(calculated_span)
 
         return elements_iterator
 
@@ -177,7 +182,7 @@ class Span(object):
         return 'Span{}({})'.format(self.span_columns, self.field_name)
 
 
-Field = partial(Span, 1)
+Field = partial(Span, 12)
 Span2 = partial(Span, 2)
 Span3 = partial(Span, 3)
 Span4 = partial(Span, 4)
