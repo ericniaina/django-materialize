@@ -1,0 +1,49 @@
+{% load l10n material_form material_form_internal %}
+{% load debug %}
+{% part bound_field.field %}<div class="row">
+    <div{% attrs bound_field 'group' %}
+        id="id_{{ bound_field.html_name }}_container"
+        class="select-field col s12{% if field.required %} required{% endif %}{% if bound_field.errors %} has-error{% endif %}"
+    {% endattrs %}>
+        {% part field prefix %}{% endpart %}{% part field label %}
+        <label{% attrs bound_field 'label' %}
+            for="{{ bound_field.id_for_label }}"
+        {% endattrs %}>{{ bound_field.label }}</label>
+        {% endpart %}
+        {% part field control %}
+        <select{% attrs bound_field 'widget' default field.widget.attrs %}
+            id="id_{{ bound_field.html_name }}"
+            name="{{ bound_field.html_name }}"
+            class="chained{% if bound_field.errors %} invalid{% endif %}"
+        {% endattrs %}>
+            {% part field options %}{% for group, items in bound_field|select_options %}
+            {% if group %}<optgroup label="{{ group }}">{% endif %}{% for choice, value, selected in items %}
+            <option {% if value == None or value == '' %}value{% else %}value="{{ value|unlocalize }}"{% endif %}{% if selected %} selected="selected"{% endif %}>{% if value == None or value == '' %}{{ form_select_empty_label|default:choice }}{% else %}{{ choice }}{% endif %}</option>{% endfor %}
+            {% if group %}</optgroup>{% endif %}{% endfor %}{% endpart %}
+        </select>
+        {% endpart %}
+        {% part field help_text %}{% if field.help_text %}
+            <small class="help-block">{{ bound_field.help_text }}</small>
+        {% endif %}{% endpart %}{% part field errors %}
+        {% if bound_field.errors %}
+            {% include  'django_materialize/field_errors.html' %}
+        {% endif %}{% endpart %}{{ hidden_initial }}
+        <script type="text/javascript">
+(function($) {
+    var chainfield = "#id_{{ bound_field.field.widget.chained_field }}";
+    var url = "/chaining/filter/{{ bound_field.field.widget.to_app_name }}/{{ bound_field.field.widget.to_model_name }}/{{ bound_field.field.widget.chained_model_field }}/{{ bound_field.field.widget.to_app_name }}/{{ bound_field.field.widget.foreign_key_model_name }}/{{ bound_field.field.widget.foreign_key_field_name }}";
+    var id = "#id_{{ bound_field.field.widget.foreign_key_field_name }}";
+    var value = undefined;
+    var auto_choose = true;
+    var empty_label = "---------";
+
+    $(document).ready(function() {
+        chainedfk.init(chainfield, url, id, value, empty_label, auto_choose);
+        $(id).on('change', function () {
+            $(id).material_select();
+        });
+    });
+})(jQuery || django.jQuery);
+        </script>
+    </div>
+</div>{% endpart %}
