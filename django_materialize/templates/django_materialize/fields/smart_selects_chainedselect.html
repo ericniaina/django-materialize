@@ -33,7 +33,7 @@
     var chainfield = "#id_{{ bound_field.field.widget.chained_field }}";
     var url = "/chaining/filter/{{ bound_field.field.widget.to_app_name }}/{{ bound_field.field.widget.to_model_name }}/{{ bound_field.field.widget.chained_model_field }}/{{ bound_field.field.widget.to_app_name }}/{{ bound_field.field.widget.foreign_key_model_name }}/{{ bound_field.field.widget.foreign_key_field_name }}";
     var id = "#id_{{ bound_field.field.widget.foreign_key_field_name }}";
-    var value = undefined;
+    var value = "{% if bound_field.value %}{{ bound_field.value }}{% else %}undefined{% endif %}";
     var auto_choose = true;
     var empty_label = "---------";
 
