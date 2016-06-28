@@ -1292,7 +1292,9 @@ $(document).ready(function(){
           $index = 0;
         }
         // Change url to current tab
-        // window.location.hash = $active.attr('href');
+        if (window.DM && window.DM.updatehash){
+            window.location.hash = $active.attr('href');
+        }
 
         if ($content !== undefined) {
           $content.show();
